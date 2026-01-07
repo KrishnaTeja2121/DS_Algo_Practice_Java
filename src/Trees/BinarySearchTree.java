@@ -51,7 +51,7 @@ public class BinarySearchTree {
 	{
 		if(root!=null) {
 			inordertraverse(root.left);	
-			inordertraverse(root.value);
+			//inordertraverse(root.value);
 			inordertraverse(root.right);
 		}
 		
