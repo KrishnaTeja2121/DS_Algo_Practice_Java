@@ -5,25 +5,20 @@ import java.util.Scanner;
 public class Day_1_DataTypes {
 
 	public static void main(String[] args) {
-		
-		int i=4;
-		double d=1.4;
-		String s="Elon musk";
-		
 		Scanner scan=new Scanner(System.in);
 		
-		int myInt;
-		double myDouble;
-		String myString;
+		System.out.println("Enter the MealCost\n");
+		double mealCost=scan.nextDouble();
+		System.out.println("Enter the Tax Percent\n");
+		int taxPercent= scan.nextInt();
+		System.out.println("Enter the Tip Percent\n");
+		int tipPercent= scan.nextInt();
 		
-		myInt=scan.nextInt();
-		myDouble=scan.nextDouble();
-		myString=scan.nextLine();
+		scan.close();
 		
-		System.out.println(i+ myInt);
-		System.out.println(d+ myDouble);
-		System.out.println(s+ myString);
+		int totalCost= (int) Math.round(mealCost + mealCost *taxPercent/100 + mealCost *tipPercent/100);
 		
+		System.out.println(totalCost+"\n");
 
 	}
 
