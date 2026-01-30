@@ -22,7 +22,5 @@ public class Day_0 {
         // Prints the contents of inputString to stdout.
         System.out.println(inputString);
 		
-
 	}
-
 }
