@@ -1,0 +1,38 @@
+package Thirty_days_of_Code;
+
+import java.time.LocalDate;
+import java.util.Scanner;
+
+public class Day19FineCalculation {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/* Read and save input as LocalDates */
+        Scanner scan = new Scanner(System.in);
+        LocalDate returnDate = readDate(scan);
+        LocalDate expectDate = readDate(scan);
+        scan.close();
+        
+        // Calculate Fine
+        int fine;
+        if(returnDate.isEqual(expectDate)|| returnDate.isBefore(expectDate)) {
+        	fine=0;
+        }else if(returnDate.getMonth() == expectDate.getMonth() && returnDate.getYear() == expectDate.getYear()) {
+        	fine = 15 * (returnDate.getDayOfMonth() - expectDate.getDayOfMonth());
+        }else if(returnDate.getYear() == expectDate.getYear()) {
+        	fine = 500 * (returnDate.getMonthValue() - expectDate.getMonthValue());
+        }else {
+        	fine=1000;
+        }
+        System.out.println(fine);
+
+	}
+	
+	private static LocalDate readDate(Scanner scan) {
+		int day   = scan.nextInt();
+        int month = scan.nextInt();
+        int year  = scan.nextInt();
+        return LocalDate.of(year, month, day);
+	}
+
+}
