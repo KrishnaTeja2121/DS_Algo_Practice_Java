@@ -28,7 +28,7 @@ public class BFSShortestReachInGraph {
             for(int i=0;i<numEdges;i++) {
             	 int n1 = scan.nextInt();
                  int n2 = scan.nextInt();
-                 node[n1].addNeighbor(node[n2]);
+                 node[n1].addNeighbour(node[n2]);
             }
             
             
