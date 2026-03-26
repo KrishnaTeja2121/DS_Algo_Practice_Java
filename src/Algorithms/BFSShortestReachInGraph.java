@@ -4,9 +4,33 @@ import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.Scanner;
 
-import org.w3c.dom.Node;
+
+
+/* Implementation of an UNDIRECTED graph */
+class Node{
+	public final int id;// each Node will have a unique ID
+	public int distance;// Also tells us if Node has been visited (-1 means unvisited)
+	public HashSet<Node> neighbours;
+	
+	
+	public Node(int id) {
+		this.id=id;
+		distance  = -1;
+		neighbours = new HashSet();
+	}
+	
+	public void addNeighbour(Node neighbour) {
+		neighbours.add(neighbour);
+		neighbour.neighbours.add(this);
+	}
+	
+	
+}
+
 
 public class BFSShortestReachInGraph {
+
+	private static final int EDGE_WEIGHT = 0;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -18,10 +42,10 @@ public class BFSShortestReachInGraph {
             int numEdges = scan.nextInt();
             
             //create Node
-            Node[] node= new Node[numNodes + 1]]; // array size declaration
+            Node[] node= new Node[numNodes + 1]; // array size declaration
             node[0]=null;// explicitly sets the unused index 0 to null, ensuring no accidental access.
             for(int i=1;i<numNodes;i++) {
-            	node[i]=new Node[i];
+            	node[i]=new Node(i);
             }
             
             // connecting edges
@@ -49,7 +73,7 @@ public class BFSShortestReachInGraph {
 	
 	// Uses BFS to find min distance of each Node from "start"
 	private static void findDistances(Node start) {
-		if(start=null) {
+		if(start==null) {
 			return;
 		}
 		
@@ -60,7 +84,7 @@ public class BFSShortestReachInGraph {
 		deque.add(start);
 		while(!deque.isEmpty()) {
 			Node curr=deque.remove();
-			for(Node neighbour:curr.neighbour) {
+			for(Node neighbour:curr.neighbours) {
 				if(neighbour.distance==-1) {//meaning it's unvisited
 					neighbour.distance = curr.distance + EDGE_WEIGHT;
                     deque.add(neighbour);					
@@ -70,34 +94,6 @@ public class BFSShortestReachInGraph {
 		}
 		
 	}
-	
-	/* Implementation of an UNDIRECTED graph */
-	public static class Node{
-		public final int id;// each Node will have a unique ID
-		public int distance;// Also tells us if Node has been visited (-1 means unvisited)
-		public HashSet<Node> neighbours;
-		
-		
-		public Node(int id) {
-			this.id=id;
-			distance  = -1;
-			neighbours = new HashSet();
-		}
-		
-		public void addNeighbour(Node neighbour) {
-			neighbours.add(neighbour);
-			neighbour.neighbours.add(this);
-		}
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
 
 }
  
